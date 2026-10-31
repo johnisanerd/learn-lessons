@@ -12,9 +12,10 @@ They are the teaching equivalent of ADRs: they capture non-obvious lessons, key 
 {1-3 sentences: what was learned (or what prior knowledge was established), and why it matters for future sessions.}
 
 **Source**: [Lesson NN](../videos/NNNN-slug/lessons/NN-slug.html), video `<title>` at [mm:ss](https://youtu.be/<id>?t=<seconds>)
+<!-- or, for a deck: [Lesson NN](../decks/NNNN-slug/lessons/NN-slug.html), deck `<title>` slide N -->
 ```
 
-The **Source** line is the one addition for video-lessons: it ties the record to the lesson and the moment in the video it came from. Everything else is the same as `/teach`.
+The **Source** line is the one addition for video-lessons and slide-lessons: it ties the record to the lesson and the moment in the video (or the slide in the deck) it came from. Everything else is the same as `/teach`.
 
 That is the whole format. A learning record can be a single paragraph. The value is recording _that_ this is now known and _why_ it changes what to teach next, not in filling out sections.
 

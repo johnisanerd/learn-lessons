@@ -1,0 +1,6 @@
+interface:
+  display_name: "Slide Lessons"
+  short_description: "Learn a slide deck without sitting through the talk"
+  default_prompt: "Make lessons from this deck: "
+policy:
+  allow_implicit_invocation: false

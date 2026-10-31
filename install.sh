@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Install the video-lessons and human-touch skills for one or more coding agents.
+# Install the video-lessons, slide-lessons and human-touch skills for one or more coding agents.
 #
 #   ./install.sh                 install for every agent found on this machine
 #   ./install.sh --claude        Claude Code   -> ~/.claude/skills
@@ -8,12 +8,12 @@
 #   ./install.sh --dir PATH      any other agent that reads SKILL.md folders
 #   ./install.sh --link          symlink instead of copy (for editing this repo)
 #   ./install.sh --force         replace a same-named skill this script didn't install
-#   ./install.sh --set-token     store your Apify token in ~/.config/video-lessons/.env
+#   ./install.sh --set-token     store your Apify token in ~/.config/video-lessons/.env (videos only)
 #   ./install.sh --uninstall     remove the skills from every target above
 set -euo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SKILLS=(video-lessons human-touch)
+SKILLS=(video-lessons slide-lessons human-touch)
 ENV_DIR="$HOME/.config/video-lessons"
 targets=() mode=copy force=0 set_token=0 uninstall=0
 
@@ -87,8 +87,11 @@ done
 
 if [[ -z "${APIFY_TOKEN:-}" && ! -s "$ENV_DIR/.env" ]]; then
   echo
-  echo "Next: add your Apify token so the skill can fetch transcripts:"
+  echo "Next: add your Apify token so video-lessons can fetch transcripts (slide-lessons needs no key):"
   echo "  $0 --set-token"
 fi
 command -v yt-dlp >/dev/null || echo "Optional: install yt-dlp to use playlists (pip install yt-dlp)."
+{ command -v soffice >/dev/null || command -v libreoffice >/dev/null; } ||
+  echo "Optional: install LibreOffice for slide images and .ppt/.odp/.key decks (sudo apt install libreoffice-impress)."
+command -v pdftoppm >/dev/null || echo "Optional: install poppler for slide PDFs and slide images (sudo apt install poppler-utils)."
 echo "Restart your agent so it picks up the new skills."

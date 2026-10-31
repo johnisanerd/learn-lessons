@@ -6,3 +6,8 @@ __pycache__/
 .DS_Store
 # Lessons and progress live in ~/Learning, never in this repo.
 Learning/
+# Test decks and their outputs
+*.pptx
+*.ppt
+*.odp
+*.key

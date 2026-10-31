@@ -11,11 +11,17 @@
 <h1>{Topic}</h1>
 <p class="win">{The mission's Why, one sentence.}</p>
 
-<!-- One block per videos/NNNN folder, newest last. li.done or li.todo. -->
+<!-- One block per videos/NNNN or decks/NNNN folder, in the order they were added. li.done or li.todo. -->
 <h2>{Video title}</h2>
-<p class="meta"><a href="https://youtu.be/{id}">{channel} · {duration}</a> · <a href="videos/{NNNN-slug}/PLAN.md">plan</a></p>
+<p class="meta">Video · <a href="https://youtu.be/{id}">{channel} · {duration}</a> · <a href="videos/{NNNN-slug}/PLAN.md">plan</a></p>
 <ol class="plan">
   <li class="done"><a href="videos/{NNNN-slug}/lessons/01-{slug}.html">{Concept}</a></li>
+  <li class="todo">{Concept}</li>
+</ol>
+
+<h2>{Deck title}</h2>
+<p class="meta">Slides · {author} · {N} slides · <a href="decks/{NNNN-slug}/PLAN.md">plan</a></p>
+<ol class="plan">
   <li class="todo">{Concept}</li>
 </ol>
 
@@ -25,7 +31,7 @@
 </ul>
 
 <footer>
-  <p class="meta">Say <code>/video-lessons next</code> for the next lesson, or <code>/video-lessons review</code> for spaced review.</p>
+  <p class="meta">Say <code>next</code> for the next lesson, or <code>/video-lessons review</code> (or <code>/slide-lessons review</code>) for spaced review.</p>
 </footer>
 </body>
 </html>

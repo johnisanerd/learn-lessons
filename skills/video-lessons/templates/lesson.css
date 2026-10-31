@@ -1,4 +1,4 @@
-/* video-lessons shared stylesheet: Catppuccin Mocha on screen, Latte for print. */
+/* video-lessons + slide-lessons shared stylesheet: Catppuccin Mocha on screen, Latte for print. */
 :root {
   --base: #1e1e2e; --mantle: #181825; --crust: #11111b;
   --surface0: #313244; --surface1: #45475a; --overlay0: #6c7086;
@@ -52,6 +52,12 @@ a.ts {
 }
 a.ts::before { content: "▶ "; color: var(--red); }
 a.ts:hover { color: var(--text); }
+a.ts.slide::before { content: "▤ "; color: var(--peach); }
+
+/* Slide figures (slide-lessons) */
+figure.slide { margin: 1.75rem 0; }
+figure.slide img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--surface0); background: #fff; }
+figure.slide figcaption { margin-top: 0.4rem; font: 0.85rem/1.4 var(--sans); color: var(--subtext); }
 
 /* Callouts: .correction .beyond .disagree .visual .note */
 .callout { margin: 1.75rem 0; padding: 0.9rem 1.15rem; border-radius: 10px; background: var(--mantle); border: 1px solid var(--surface0); border-left-width: 4px; }
@@ -114,5 +120,5 @@ footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--surf
   .opt { border: none; background: none; padding: 0.1rem 0; }
   .score, .pager, .ask { display: none; }
   a.ts { background: none; }
-  .callout, .q, .win, pre { break-inside: avoid; }
+  .callout, .q, .win, pre, figure.slide { break-inside: avoid; }
 }

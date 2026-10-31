@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{Topic}</title>
+<link rel="stylesheet" href="assets/lesson.css">
+</head>
+<body>
+
+<h1>{Topic}</h1>
+<p class="win">{The mission's Why, one sentence.}</p>
+
+<!-- One block per videos/NNNN or decks/NNNN folder, in the order they were added. li.done or li.todo. -->
+<h2>{Video title}</h2>
+<p class="meta">Video · <a href="https://youtu.be/{id}">{channel} · {duration}</a> · <a href="videos/{NNNN-slug}/PLAN.md">plan</a></p>
+<ol class="plan">
+  <li class="done"><a href="videos/{NNNN-slug}/lessons/01-{slug}.html">{Concept}</a></li>
+  <li class="todo">{Concept}</li>
+</ol>
+
+<h2>{Deck title}</h2>
+<p class="meta">Slides · {author} · {N} slides · <a href="decks/{NNNN-slug}/PLAN.md">plan</a></p>
+<ol class="plan">
+  <li class="todo">{Concept}</li>
+</ol>
+
+<h2>Reference</h2>
+<ul>
+  <li><a href="reference/{slug}.html">{Reference doc}</a></li>
+</ul>
+
+<footer>
+  <p class="meta">Say <code>next</code> for the next lesson, or <code>/video-lessons review</code> (or <code>/slide-lessons review</code>) for spaced review.</p>
+</footer>
+</body>
+</html>

@@ -1,8 +1,8 @@
 {
-  "name": "video-lessons",
-  "version": "1.0.0",
-  "description": "Turn YouTube videos and playlists into short, quizzed, fact-checked lessons with spaced review, so you can learn without watching. Bundles the human-touch writing skill.",
+  "name": "learn-lessons",
+  "version": "1.1.0",
+  "description": "Learn without watching or sitting through the talk: turn YouTube videos, playlists and slide decks into short, quizzed, fact-checked lessons with spaced review. Bundles video-lessons, slide-lessons and the human-touch writing skill.",
   "author": { "name": "Md Nazmul Islam" },
   "license": "MIT",
-  "keywords": ["learning", "youtube", "transcripts", "apify", "teaching", "spaced-repetition"]
+  "keywords": ["learning", "youtube", "transcripts", "apify", "slides", "powerpoint", "pptx", "teaching", "spaced-repetition"]
 }

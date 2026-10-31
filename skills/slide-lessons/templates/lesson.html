@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{NN}. {Concept}: {Topic}</title>
+<link rel="stylesheet" href="../../../assets/lesson.css">
+</head>
+<body>
+
+<p class="crumbs"><a href="../../../index.html">{Topic}</a> › <a href="../PLAN.md">{Deck title}</a> › Lesson {N} of {total}</p>
+<h1>{Concept}</h1>
+<p class="meta">From {Deck title} by {author} · covers slides <a class="ts slide" href="../slides/{deck-slug}/{NN}.png">{N}</a>–{M} · ~10 min</p>
+
+<p class="win">{One sentence: what you can do after this lesson, tied to the mission.}</p>
+
+<h2>{Section}</h2>
+<p>{Explanation. Each claim from the deck cites its slide: <a class="ts slide" href="../slides/{deck-slug}/07.png">Slide 7</a>. Each claim from research cites its source: (<a href="…">source</a>).}</p>
+
+<!-- Embed a slide only where the picture carries meaning. Explain it in words too; alt text says what it shows. -->
+<figure class="slide">
+  <a href="../slides/{deck-slug}/07.png"><img src="../slides/{deck-slug}/07.png" alt="{What the slide shows, in one sentence}" loading="lazy"></a>
+  <figcaption>Slide 7: {what to notice in it}</figcaption>
+</figure>
+
+<!-- Callouts: use only when earned. -->
+<div class="callout correction"><p class="callout-title">⚠ Correction</p><p>{The deck says X <a class="ts slide" href="…">Slide 7</a>. Actually Y (<a href="…">source</a>).}</p></div>
+<div class="callout beyond"><p class="callout-title">➕ Beyond the slides</p><p>{What the slides leave out, cited.}</p></div>
+<div class="callout disagree"><p class="callout-title">⚖ Sources disagree</p><p>{Deck A says…, deck B (or video) says…, sources say…}</p></div>
+<div class="callout visual"><p class="callout-title">🖼 Picture-only</p><p>{A visual you couldn't fully explain: what it shows on <a class="ts slide" href="…">Slide 7</a> and why it matters.}</p></div>
+
+<h2>Check yourself</h2>
+<section class="quiz">
+  <div class="q">
+    <p class="prompt">{Question that makes you retrieve or apply.}</p>
+    <button class="opt" data-why="{Why this is wrong.}">{Option, same word count}</button>
+    <button class="opt" data-correct data-why="{Why this is right.}">{Option, same word count}</button>
+    <button class="opt" data-why="{Why this is wrong.}">{Option, same word count}</button>
+  </div>
+  <p class="score"></p>
+</section>
+
+<p class="try">{One small real task, ideally on the user's own work.}</p>
+
+<footer>
+  <p><strong>Go deeper:</strong> <a href="{best source}">{Best high-trust source}</a> · the slides themselves: <a href="../slides/{deck-slug}/{NN}.png">slides {N}–{M}</a></p>
+  <p><strong>Reference:</strong> <a href="../../../reference/{slug}.html">{Reference doc}</a></p>
+  <p class="ask">Anything unclear? Ask me. I'm your teacher for this.</p>
+  <nav class="pager"><a href="{prev}.html">← {Previous}</a><a href="{next}.html">{Next} →</a></nav>
+</footer>
+
+<script src="../../../assets/quiz.js"></script>
+</body>
+</html>

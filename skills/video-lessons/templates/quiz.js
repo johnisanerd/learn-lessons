@@ -1,4 +1,4 @@
-// video-lessons quiz widget: instant feedback per question, running score.
+// video-lessons + slide-lessons quiz widget: instant feedback per question, running score.
 // Markup: section.quiz > div.q > p.prompt + button.opt[data-why][data-correct?]...
 document.querySelectorAll(".quiz").forEach((quiz) => {
   const questions = [...quiz.querySelectorAll(".q")];

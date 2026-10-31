@@ -21,7 +21,7 @@ The lessons must stand alone. If the user has to open the video to follow a less
 | `/video-lessons next [topic]` (or "next") | [Recall check](#6-next) → build the next lesson in the plan |
 | `/video-lessons review` | [Spaced review](#7-review) across every topic |
 
-If `next` has no topic and more than one topic has unfinished lessons, ask which one.
+If `next` has no topic and more than one topic has unfinished lessons, ask which one. If the next unfinished lesson belongs to a slide deck (`decks/` folder), build it by the `slide-lessons` skill's rules (`SKILL_DIR/../slide-lessons/SKILL.md`, section 6).
 
 The commands work the same in every agent; only the way you invoke the skill differs (`/video-lessons` in Claude Code, `$video-lessons` in Codex, a plain request in Gemini CLI and others).
 
@@ -35,17 +35,20 @@ The commands work the same in every agent; only the way you invoke the skill dif
 ```
 ~/Learning/<topic>/
   MISSION.md  RESOURCES.md  COMMUNITIES.md  GLOSSARY.md  NOTES.md
-  index.html                 course home: every video, its plan, lessons done
+  index.html                 course home: every video and deck, its plan, lessons done
   review.json                spaced-review cards (managed by scripts/review.py)
   learning-records/0001-<slug>.md
   reference/<slug>.html      cheat sheets, glossary print-outs
   assets/lesson.css  assets/quiz.js   (copied from templates on topic creation)
-  videos/0001-<slug>/
+  decks/0001-<slug>/         from slide-lessons (same topics, shared review)
+  videos/0002-<slug>/
     meta.json                url(s), title, channel, duration, fetched date, cost
     transcripts/<video-id>.md  timestamped transcript, one per video
     PLAN.md                  the lesson plan
     lessons/01-<slug>.html
 ```
+
+`NNNN` numbers are shared by `videos/` and `decks/` in a topic: take the next number after the highest in either folder.
 
 Formats: [MISSION](formats/MISSION-FORMAT.md), [RESOURCES](formats/RESOURCES-FORMAT.md), [COMMUNITIES](formats/COMMUNITIES-FORMAT.md), [GLOSSARY](formats/GLOSSARY-FORMAT.md), [LEARNING-RECORD](formats/LEARNING-RECORD-FORMAT.md), [PLAN](formats/PLAN-FORMAT.md). Read a format before writing that file for the first time in a session.
 
@@ -72,6 +75,7 @@ It writes `transcripts/<id>.md` (30-second paragraphs stamped `[mm:ss]`, chapter
 If the user named a topic, use it. Otherwise list `~/Learning/*/MISSION.md`, read their `# Mission:` lines, and guess.
 - **Fits an existing topic:** "This looks like *<topic>*. Add it there?" Wait for yes.
 - **New topic:** propose a short kebab-case name and ask for **one sentence on why they want this** ("so I can…"). Push once if it's vague. Write a short `MISSION.md` from it; it can grow later. Create the folder, copy `templates/lesson.css` and `templates/quiz.js` into `assets/`, and create `NOTES.md` (empty), `review.json` (`[]`), and `COMMUNITIES.md` (find 2–3 high-reputation communities now, per the format).
+- **Existing topic whose `assets/lesson.css` has no `figure.slide` rule:** copy `templates/lesson.css` over it. The new file is a superset.
 
 ## 3. Plan
 
