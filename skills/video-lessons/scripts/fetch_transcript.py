@@ -39,6 +39,7 @@ API = "https://api.apify.com/v2/acts/{actor}/run-sync-get-dataset-items"
 CAPTIONS_ACTOR = "johnvc~YoutubeTranscripts"
 AI_ACTOR = "codepoetry~youtube-transcript-ai-scraper"
 PRICE_PER_VIDEO = 0.003
+MAX_URLS_PER_RUN = 100  # johnvc/YoutubeTranscripts only processes the first 100 URLs of a run
 PRICE_AI_PER_MIN = 0.012
 PARAGRAPH_SECONDS = 30
 ENV_FILE = Path.home() / ".config" / "video-lessons" / ".env"
@@ -245,8 +246,14 @@ def cmd_fetch(urls, opts):
     rows = expand(urls)
     links = [f"https://www.youtube.com/watch?v={vid}" for vid, _, _ in rows]
     langs = [code.strip() for code in opts["lang"].split(",") if code.strip()]
-    max_usd = opts["max_usd"] or max(0.05, len(links) * PRICE_PER_VIDEO * 2)
-    items = run_actor(CAPTIONS_ACTOR, {"youtube_url": links, "languages": langs, "include_metadata": True}, max_usd)
+    items = []
+    for start in range(0, len(links), MAX_URLS_PER_RUN):
+        batch = links[start:start + MAX_URLS_PER_RUN]
+        if opts["max_usd"]:  # --max-usd covers all the caption runs, so each batch gets its share
+            max_usd = max(0.01, opts["max_usd"] * len(batch) / len(links))
+        else:
+            max_usd = max(0.05, len(batch) * PRICE_PER_VIDEO * 2)
+        items += run_actor(CAPTIONS_ACTOR, {"youtube_url": batch, "languages": langs, "include_metadata": True}, max_usd)
     good = [it for it in items if it.get("success") is not False and segments_of(it)]
     written = save(good, opts["out"], "johnvc/YoutubeTranscripts", len(good) * PRICE_PER_VIDEO)
     done = {w["id"] for w in written}
